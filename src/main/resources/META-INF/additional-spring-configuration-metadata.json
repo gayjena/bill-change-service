@@ -1,0 +1,42 @@
+{"properties": [
+  {
+    "name": "config.coin-store.values.0.25",
+    "type": "java.lang.Integer",
+    "description": "A description for 'config.coin-store.values.0.25'"
+  },
+  {
+    "name": "config.coin-store.values.0.10",
+    "type": "java.lang.Integer",
+    "description": "A description for 'config.coin-store.values.0.10'"
+  },
+  {
+    "name": "config.coin-store.values.0.05",
+    "type": "java.lang.Integer",
+    "description": "A description for 'config.coin-store.values.0.05'"
+  },
+  {
+    "name": "config.coin-store.values.0.01",
+    "type": "java.lang.Integer",
+    "description": "A description for 'config.coin-store.values.0.01'"
+  },
+  {
+    "name": "config.bill.valid-values",
+    "type": "java.lang.String",
+    "description": "A description for 'config.bill.valid-values'"
+  },
+  {
+    "name": "config.change-type.default-value",
+    "type": "java.lang.String",
+    "description": "A description for 'config.change-type.default-value'"
+  },
+  {
+    "name": "config.change-type.validValues",
+    "type": "java.lang.String",
+    "description": "A description for 'config.change-type.validValues'"
+  },
+  {
+    "name": "config.coin-store.maxCapacity",
+    "type": "java.lang.Integer",
+    "description": "A description for 'config.coin-store.maxCapacity'"
+  }
+]}

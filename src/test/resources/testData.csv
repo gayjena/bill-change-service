@@ -1,0 +1,60 @@
+bill|type|change|error
+Insert|coinValue|quantity
+
+20|LEAST|{0.25=80}|null
+10|LEAST|{0.1=50, 0.25=20}|null
+
+20|LEAST|null|Not Found
+5|LEAST|{0.1=50}|null
+
+10|LEAST|null|Not Found
+2|LEAST|{0.05=40}|null
+5|LEAST|null|Not Found
+2|LEAST|{0.05=40}|null
+1|LEAST|{0.05=20}|null
+2|LEAST|null|Not Found
+1|LEAST|{0.01=100}|null
+2|LEAST|null|Not Found
+
+Insert|0.25|18
+Insert|0.10|100
+Insert|0.05|20
+Insert|0.01|100
+
+2|LEAST|{0.25=8}|null
+10|LEAST|{0.1=75, 0.25=10}|null
+2|LEAST|{0.1=20}|null
+2|MOST|{0.01=100, 0.05=20}|null
+
+1|LEAST|null|Not Found
+10|LEAST|null|Not Found
+
+Insert|0.25|0
+Insert|0.10|100
+Insert|0.05|100
+Insert|0.01|100
+
+10|LEAST|{0.1=100}|null
+2|LEAST|{0.05=30, 0.1=5}|null
+1|LEAST|{0.05=20}|null
+
+Insert|0.25|100
+Insert|0.10|100
+Insert|0.05|50
+Insert|0.25|5
+Insert|0.10|5
+Insert|0.05|5
+Insert|0.01|5
+
+2|MOST|{0.01=105, 0.05=19}|null
+5|MOST|{0.05=86, 0.1=7}|null
+20|LEAST|{0.25=80}|null
+10|LEAST|{0.1=40, 0.25=24}|null
+
+Insert|0.05|5
+
+5|LEAST|{0.05=1, 0.1=47, 0.25=1}|null
+
+-1|LEAST|null|Bad Request
+3|MOST|null|Bad Request
+15|LEAST|null|Bad Request
