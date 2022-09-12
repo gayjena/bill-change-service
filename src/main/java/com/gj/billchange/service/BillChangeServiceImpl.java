@@ -1,6 +1,7 @@
 package com.gj.billchange.service;
 
 
+import java.math.BigDecimal;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
@@ -30,22 +31,21 @@ public class BillChangeServiceImpl implements BillChangeService{
 		Map<Double, Integer> coinStore = coinStoreConfig.getCoinStore(sortType);
 		log.info("calculateChange() coinStore init: {}", coinStore);
 
-		double pendingBillAmt = bill;
+		BigDecimal pendingBillAmt = BigDecimal.valueOf(bill);
 		for (Entry<Double, Integer> entrySet: coinStore.entrySet()) {
-			if (pendingBillAmt <= 0)
+			if (pendingBillAmt.compareTo(BigDecimal.valueOf(0)) <= 0)
 				break;
 			double coinVal = entrySet.getKey();
 			int coinQty = entrySet.getValue();
 			int no = getSingleChangeQty(pendingBillAmt, coinVal, coinQty);
 			if (no != -1) {
-				pendingBillAmt -= (coinVal * no);
-				pendingBillAmt = Math.round(pendingBillAmt * 100.0) / 100.0;
+				pendingBillAmt = pendingBillAmt.subtract(BigDecimal.valueOf(coinVal * no));
 				resultChangeMap.put(coinVal, no);
 			}
 			log.info("pendingBillAmt = {}", pendingBillAmt);
 		}
 		
-		if (pendingBillAmt > 0) {
+		if (pendingBillAmt.compareTo(BigDecimal.valueOf(0)) > 0) {
 			log.info("calculateChange() completed but Change can not be made for bill {}.", bill);
 			throw new ChangeNotFoundException(String.format("Change Not Found for %d", bill));
 		}else {
@@ -55,12 +55,12 @@ public class BillChangeServiceImpl implements BillChangeService{
 		}
 	}
 
-	private int getSingleChangeQty(double bill, Double coinVal, Integer coinQty) {
+	private int getSingleChangeQty(BigDecimal bill, Double coinVal, Integer coinQty) {
 		log.info("getSingleChangeQty() bill = {}, coinVal = {}, coinQty = {}", bill, coinVal, coinQty);
 
 		int result = -1;
 		if (coinQty > 0) {
-			result = Math.min((int)(bill * (1 / coinVal)), coinQty);
+			result = Math.min((int)(bill.doubleValue() * (1 / coinVal)), coinQty);
 		}
 		log.info("getSingleChangeQty() result = {}", result);
 
